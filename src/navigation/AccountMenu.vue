@@ -20,13 +20,17 @@
 export default {
   data() {
     return {
-      user: null,
       showMenu: false,
     };
   },
   methods: {
     signOut() {
       this.showMenu = false;
+    },
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
     },
   },
 };
