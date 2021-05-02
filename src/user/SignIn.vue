@@ -36,6 +36,11 @@ export default {
   methods: {
     signIn() {
       // sign in user
+      this.$store.dispatch('signInUser', {
+        email: this.email,
+        password: this.password,
+      });
+      this.$router.push('/products');
     },
     cancel() {
       this.router.navigate(['/']);
