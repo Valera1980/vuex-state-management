@@ -26,11 +26,12 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex';
 
 export default {
   name: 'Products',
   created() {
-    this.$store.dispatch('fetchProducts');
+    this.$store.dispatch('products/fetchProducts');
   },
   data() {
     return {
@@ -43,12 +44,14 @@ export default {
     },
     addToCart(id) {
       const product = this.visibleProducts.find((i) => i.id === id);
-      this.$store.commit('addToCart', product);
+      this.$store.commit('products/addToCart', product);
     },
   },
   computed: {
+    // ...mapState('products', ['getFilteredProducts']),
     visibleProducts() {
-      return this.$store.getters.getFilteredProducts(this.filter);
+      console.log(this.$store);
+      return this.$store.getters['products/getFilteredProducts'](this.filter);
     },
   },
 };
